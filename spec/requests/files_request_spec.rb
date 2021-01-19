@@ -45,6 +45,6 @@ RSpec.describe "Files", type: :feature do
         expect(files.dig(entry.name, :content)).to eql(io.read)
       end
     end
-
   end
+
 end

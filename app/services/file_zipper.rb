@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'securerandom'
 require 'zip'
 
@@ -34,7 +36,7 @@ class FileZipper < ApplicationService
   private
 
   def filename
-    DateTime.now.strftime("%Q") # timestamp with milliseconds
+    DateTime.now.strftime('%Q') # timestamp with milliseconds
   end
 
   def password
