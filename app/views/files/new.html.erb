@@ -1,0 +1,4 @@
+<%= form_with url: '/zipper', multipart: true do |form| %>
+  <%= form.file_field :files, multiple: true %>
+  <%= form.submit 'Upload Picture' %>
+<% end %>
