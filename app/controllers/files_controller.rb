@@ -2,6 +2,8 @@
 
 class FilesController < ApplicationController
 
+  before_action :validate_params, only: :create
+
   def show
     redirect_to root_url unless flash.present?
   end
@@ -17,6 +19,16 @@ class FilesController < ApplicationController
   def download
     filepath = FileZipper.get_filepath(params[:id])
     send_file(filepath, type: 'application/zip')
+  end
+
+  private
+
+  def validate_params
+    begin
+      params.require(:files)
+    rescue
+      redirect_to action: 'new'
+    end
   end
 
 end
