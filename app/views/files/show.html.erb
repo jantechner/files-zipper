@@ -1,5 +1,7 @@
 <div class="details">
-  <%= link_to 'Download file', "#{params[:id]}/download" %>
+  <%= link_to 'Download zip', "#{params[:id]}/download" %>
   <br>
-  <span> Password: <%= flash[:password] %></span>
+  <div class="password_details">
+    Password: <span id="password"><%= flash[:password] %></span>
+  </div>
 </div>
