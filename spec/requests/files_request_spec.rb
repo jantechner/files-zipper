@@ -8,7 +8,7 @@ RSpec.describe "Files", type: :feature do
   end
 
   it 'shows a new form' do
-    visit new_zipper_path
+    visit new_file_path
     expect(page).to have_field('files[]', type: :file)
   end
 
@@ -23,7 +23,7 @@ RSpec.describe "Files", type: :feature do
       }
     end
 
-    visit new_zipper_path
+    visit new_file_path
 
     page.attach_file "files[]", files.map { |k, v| v[:path] }
 
@@ -31,7 +31,7 @@ RSpec.describe "Files", type: :feature do
 
     file_id = page.current_url.split('/').last
     password = page.find_by_id('password').text
-    expect(password.length).to eql(24)
+    expect(password.length).to eql(FileZipper::PASSWORD_LENGTH)
 
     download_link = page.find_link
     expect(download_link[:href]).to eq("#{file_id}/download")

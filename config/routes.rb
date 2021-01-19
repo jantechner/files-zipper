@@ -3,12 +3,7 @@ Rails.application.routes.draw do
 
   root to: redirect('/zipper/new')
 
-  # get '/zipper/new', to: 'files#new'
-  # post '/zipper', to: 'files#create'
-  # get 'zipper/:id', to: 'files#show'
-  # get 'zipper/:id/download', to: 'files#download'
-
-  resources :zipper, controller: :files, only: [:new, :show, :create] do
+  resources :files, path: 'zipper', only: [:new, :show, :create], constraints: { id: /\d{13}/ } do
     member do
       get '/download', action: :download
     end
